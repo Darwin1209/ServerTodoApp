@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import AppHeader from '../AppHeader';
 import Search from '../Search';
@@ -107,6 +108,8 @@ class App extends React.Component {
                 return (items.filter( (item) => {
                     return item.done === true;
                 }));
+            default:
+                return 'all';
         }
     }
 
@@ -135,7 +138,6 @@ class App extends React.Component {
                         onFilterChange={this.onFilterChange}
                     />
                 </div>
-    
                 <TodoList 
                     todo={ visibleItems }
                     onDeleted={ this.deleteItem } 
@@ -150,4 +152,10 @@ class App extends React.Component {
     }
 }
 
-export default App;
+const mapStateToProps = store => {
+    return {
+        user: store.user,
+    }
+}
+
+export default connect(mapStateToProps)(App);
