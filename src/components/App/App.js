@@ -12,6 +12,23 @@ import ItemAddForm from '../ItemAddForm';
 
 import './App.css'
 
+/*
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Ты молодец (так Лерося сказала), ты справился, осталось 
+только провести рефакторинг, закинув в PAGE
+всё что должно иметь доступ к стору, не обязательно
+передавать туда пропами доступ к каждому элементу, только
+те к которым там необходим доступ, типа в Search
+изменение term у стора, но надо решить что делать
+с остальными функциями, что работают со View
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+*/
+
+
 class App extends React.Component {
     
     maxId = 100;
@@ -116,8 +133,13 @@ class App extends React.Component {
         }
     }
 
-    onSearchChange = (term) => {
+    /*onSearchChange = (term) => {
         this.setState ( {term} );
+    }*/
+
+    onSearchChange = (e) => {
+        const term = e.target.value;
+        this.props.setTermAction(term);
     }
 
     onFilterChange = (filter) => {
@@ -125,16 +147,43 @@ class App extends React.Component {
     }
 
     render() {
-        const { todoData, term, filter } = this.state;
-        const visibleItems = this.filter( this.search(todoData, term), filter);
+        const { todoData, filter } = this.state;
+        const { term } = this.props.page;
+        const visibleItems = this.filter( this.search(todoData, this.props.page.term), filter);
         const doneCount = todoData.filter((el) => el.done).length;
         const todoCount = todoData.length - doneCount;
+
+        /*return (
+            <div className="todo-app">
+                <AppHeader toDo={todoCount} done={doneCount} />
+                <div className="top-panel d-flex">
+                    <Search onSearchChange = { this.onSearchChange }/>
+                    <ItemStatusFilter 
+                        filter={filter}
+                        onFilterChange={this.onFilterChange}
+                    />
+                </div>
+                <TodoList 
+                    todo={ visibleItems }
+                    onDeleted={ this.deleteItem } 
+                    onToggleDone={ this.onToggleDone }
+                    onToggleImportant= { this.onToggleImportant }
+                />
+
+                <ItemAddForm
+                    onCreate={ this.createItem }/>
+            </div>
+        );*/
 
         return (
             <div className="todo-app">
                 <AppHeader toDo={todoCount} done={doneCount} />
                 <div className="top-panel d-flex">
-                    <Search onSearchChange = { this.onSearchChange }/>
+                <input type="text"
+                    className="form-control search-input"
+                    placeholder="поиск"
+                    value={this.props.page.term}
+                    onChange={this.onSearchChange}/>
                     <ItemStatusFilter 
                         filter={filter}
                         onFilterChange={this.onFilterChange}
