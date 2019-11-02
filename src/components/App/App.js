@@ -6,6 +6,8 @@ import Search from '../Search';
 import TodoList from '../TodoList';
 import ItemStatusFilter from '../ItemStatusFilter';  
 import ItemAddForm from '../ItemAddForm';
+import { User } from '../User'
+import { Page } from '../Page'
 
 import './App.css'
 
@@ -123,7 +125,6 @@ class App extends React.Component {
 
     render() {
         const { todoData, term, filter } = this.state;
-
         const visibleItems = this.filter( this.search(todoData, term), filter);
         const doneCount = todoData.filter((el) => el.done).length;
         const todoCount = todoData.length - doneCount;
