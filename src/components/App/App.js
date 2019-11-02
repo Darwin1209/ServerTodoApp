@@ -1,13 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { setTodo, setFilter, setTerm } from '../../actions/PageActions'
 
 import AppHeader from '../AppHeader';
 import Search from '../Search';
 import TodoList from '../TodoList';
 import ItemStatusFilter from '../ItemStatusFilter';  
 import ItemAddForm from '../ItemAddForm';
-import { User } from '../User'
-import { Page } from '../Page'
+//import { User } from '../User'
+//import { Page } from '../Page'
 
 import './App.css'
 
@@ -161,4 +162,15 @@ const mapStateToProps = store => {
     }
 }
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = dispatch => {
+    return {
+        setTodoAction: todo => dispatch(setTodo(todo)),
+        setTermAction: term => dispatch(setTerm(term)),
+        setFilterAction: filt => dispatch(setFilter(filt)),
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(App);
