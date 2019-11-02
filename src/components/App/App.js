@@ -153,8 +153,10 @@ class App extends React.Component {
 }
 
 const mapStateToProps = store => {
+    console.log(store);
     return {
         user: store.user,
+        page: store.page
     }
 }
 
