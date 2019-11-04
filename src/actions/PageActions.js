@@ -18,3 +18,10 @@ export function setTerm(term) {
         payload: term,
     }
 }
+
+export function deleteItem(id) {
+    return {
+        type: 'DELETE_ITEM',
+        payload: id,
+    }
+}

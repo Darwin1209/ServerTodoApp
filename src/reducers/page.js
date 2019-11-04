@@ -1,20 +1,26 @@
 const initialState = {
-    todoData: [
-        "aaaa",
-    ],
+    todoData: [{label: "аыфафы", important: false, done: false, id: 101}],
     term : '',
     filter: 'all',
 }
 
-export function pageReducer(state = initialState, action) {
-    switch (action.type) {
+export function pageReducer(state = initialState, {type, payload}) {
+    switch (type) {
         case 'SET_TODO':
-            return { ...state, todoData: state.todoData.push(action.payload)};
+            let array = state.todoData;
+            array.push(payload);
+            return { ...state, todoData: array};
         case 'SET_FILTER':
-            return { ...state, filter: action.payload};
+            return { ...state, filter: payload};
         case 'SET_TERM':
-            return { ...state, term: action.payload};
-
+            return { ...state, term: payload};
+        case 'DELETE_ITEM':
+            const idx = state.todoData.findIndex ((el) => el.id === payload);
+            const newArray = [
+                ...state.todoData.slice (0, idx),
+                ...state.todoData.slice (idx + 1)
+            ];
+            return { ...state, todoData: newArray };
         default:
             return state;
     }

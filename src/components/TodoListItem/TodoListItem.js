@@ -7,11 +7,12 @@ class TodoListItem extends React.Component {
 
         const { 
             label, 
-            onDeleted, 
+            deleteItemAction, 
             onToggleImportant, 
             onToggleDone,
             done,
-            important
+            important,
+            id,
         } = this.props;
 
         let classNames = 'todo-list-item';
@@ -39,7 +40,7 @@ class TodoListItem extends React.Component {
     
                 <button type="button"
                     className="btn btn-outline-danger btn-sm float-right"
-                    onClick = { onDeleted }>
+                    onClick = { deleteItemAction }>
                     <i className="fa fa-trash-o" />
                 </button>
             </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setTodo, setFilter, setTerm } from '../../actions/PageActions'
+import { setTodo, setFilter, setTerm, deleteItem } from '../../actions/PageActions'
 
 import AppHeader from '../AppHeader';
 import Search from '../Search';
@@ -69,13 +69,7 @@ class App extends React.Component {
 
         const newItem = this.createTodoItem(text);
 
-        this.setState(({todoData}) => {
-            const newArray = [...todoData, newItem];
-
-            return {
-                todoData: newArray,
-            };
-        });
+        this.props.setTodoAction(newItem);
     };
 
     toggleProperty (arr, id, propName) {
@@ -147,11 +141,11 @@ class App extends React.Component {
     }
 
     render() {
-        const { todoData, filter } = this.state;
-        const { term } = this.props.page;
+        const { filter } = this.state;
+        const { term,todoData } = this.props.page;
         const visibleItems = this.filter( this.search(todoData, this.props.page.term), filter);
-        const doneCount = todoData.filter((el) => el.done).length;
-        const todoCount = todoData.length - doneCount;
+        //const doneCount = todoData.filter((el) => el.done).length;
+        //const todoCount = todoData.length - doneCount;
 
         /*return (
             <div className="todo-app">
@@ -177,12 +171,12 @@ class App extends React.Component {
 
         return (
             <div className="todo-app">
-                <AppHeader toDo={todoCount} done={doneCount} />
+                <AppHeader />
                 <div className="top-panel d-flex">
                 <input type="text"
                     className="form-control search-input"
                     placeholder="поиск"
-                    value={this.props.page.term}
+                    value={term}
                     onChange={this.onSearchChange}/>
                     <ItemStatusFilter 
                         filter={filter}
@@ -191,7 +185,7 @@ class App extends React.Component {
                 </div>
                 <TodoList 
                     todo={ visibleItems }
-                    onDeleted={ this.deleteItem } 
+                    deleteItemAction={ this.props.deleteItemAction } 
                     onToggleDone={ this.onToggleDone }
                     onToggleImportant= { this.onToggleImportant }
                 />
@@ -216,6 +210,7 @@ const mapDispatchToProps = dispatch => {
         setTodoAction: todo => dispatch(setTodo(todo)),
         setTermAction: term => dispatch(setTerm(term)),
         setFilterAction: filt => dispatch(setFilter(filt)),
+        deleteItemAction: id => dispatch(deleteItem(id))
     }
 }
 
