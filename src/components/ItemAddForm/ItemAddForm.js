@@ -4,8 +4,18 @@ import './ItemAddForm.css';
 
 class ItemAddForm extends React.Component {
 
+    maxId = 101;
     state = {
         label: ''
+    }
+
+    createItem(label) {
+        return {
+            label,
+            important: false,
+            done: false,
+            id: this.maxId++
+        }
     }
 
     onLabelChange = (event) => {
@@ -16,7 +26,8 @@ class ItemAddForm extends React.Component {
 
     onSubmit = (event) => {
         event.preventDefault();
-        this.props.onCreate(this.state.label);
+        let tast = this.createItem(this.state.label);
+        this.props.onCreate(tast);
         this.setState ( {label: '' });
     }
 

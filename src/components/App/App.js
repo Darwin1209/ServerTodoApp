@@ -34,43 +34,17 @@ class App extends React.Component {
     maxId = 100;
 
     state = {
-        todoData: [
-            this.createTodoItem("Создать приложение"),
-        ],
+
         term : '',
         filter: 'all' //all, active, done
     }
 
-    createTodoItem(label) {
-        return {
-            label,
-            important: false,
-            done: false,
-            id: this.maxId++
-        }
-    }
-
-    deleteItem = (id) => {
-        this.setState (({ todoData }) => {
-            const idx = todoData.findIndex ( (el) => el.id === id);
-
-            const newArray = [
-                ...todoData.slice (0, idx),
-                ...todoData.slice (idx + 1)
-            ];
-
-            return {
-                todoData: newArray
-           };
-        });
-    };
-
-    createItem = (text) => {
+    /*createItem = (text) => {
 
         const newItem = this.createTodoItem(text);
 
         this.props.setTodoAction(newItem);
-    };
+    };*/
 
     toggleProperty (arr, id, propName) {
         const idx = arr.findIndex( (el) => el.id === id);
@@ -127,31 +101,21 @@ class App extends React.Component {
         }
     }
 
-    /*onSearchChange = (term) => {
-        this.setState ( {term} );
-    }*/
-
-    onSearchChange = (e) => {
-        const term = e.target.value;
-        this.props.setTermAction(term);
-    }
-
     onFilterChange = (filter) => {
         this.setState ( {filter} );
     }
 
     render() {
         const { filter } = this.state;
-        const { term,todoData } = this.props.page;
+        const { todoData } = this.props.page;
         const visibleItems = this.filter( this.search(todoData, this.props.page.term), filter);
-        //const doneCount = todoData.filter((el) => el.done).length;
-        //const todoCount = todoData.length - doneCount;
+        const doneCount = todoData.filter((el) => el.done).length;
+        const todoCount = todoData.length - doneCount;
 
         /*return (
             <div className="todo-app">
                 <AppHeader toDo={todoCount} done={doneCount} />
                 <div className="top-panel d-flex">
-                    <Search onSearchChange = { this.onSearchChange }/>
                     <ItemStatusFilter 
                         filter={filter}
                         onFilterChange={this.onFilterChange}
@@ -167,17 +131,21 @@ class App extends React.Component {
                 <ItemAddForm
                     onCreate={ this.createItem }/>
             </div>
-        );*/
 
-        return (
-            <div className="todo-app">
-                <AppHeader />
-                <div className="top-panel d-flex">
-                <input type="text"
+
+
+            <input type="text"
                     className="form-control search-input"
                     placeholder="поиск"
                     value={term}
                     onChange={this.onSearchChange}/>
+        );*/
+
+        return (
+            <div className="todo-app">
+                <AppHeader toDo={todoCount} done={doneCount}/>
+                <div className="top-panel d-flex">
+                <Search onSearchChange = { this.props.setTermAction }/>
                     <ItemStatusFilter 
                         filter={filter}
                         onFilterChange={this.onFilterChange}
@@ -191,7 +159,7 @@ class App extends React.Component {
                 />
 
                 <ItemAddForm
-                    onCreate={ this.createItem }/>
+                    onCreate={ this.props.setTodoAction }/>
             </div>
         );
     }

@@ -12,7 +12,6 @@ class TodoListItem extends React.Component {
             onToggleDone,
             done,
             important,
-            id,
         } = this.props;
 
         let classNames = 'todo-list-item';
