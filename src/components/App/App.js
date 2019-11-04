@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setTodo, setFilter, setTerm, deleteItem } from '../../actions/PageActions'
+import { setTodo, setFilter, setTerm, deleteItem, doneItem } from '../../actions/PageActions'
 
 import AppHeader from '../AppHeader';
 import Search from '../Search';
@@ -141,7 +141,7 @@ class App extends React.Component {
                 <TodoList 
                     todo={ visibleItems }
                     deleteItemAction={ this.props.deleteItemAction } 
-                    onToggleDone={ this.onToggleDone }
+                    onToggleDone={ this.props.doneItemAction }
                     onToggleImportant= { this.onToggleImportant }
                 />
 
@@ -165,7 +165,8 @@ const mapDispatchToProps = dispatch => {
         setTodoAction: todo => dispatch(setTodo(todo)),
         setTermAction: term => dispatch(setTerm(term)),
         setFilterAction: filt => dispatch(setFilter(filt)),
-        deleteItemAction: id => dispatch(deleteItem(id))
+        deleteItemAction: id => dispatch(deleteItem(id)),
+        doneItemAction: id => dispatch(doneItem(id)),
     }
 }
 

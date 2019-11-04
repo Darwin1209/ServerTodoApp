@@ -25,3 +25,10 @@ export function deleteItem(id) {
         payload: id,
     }
 }
+
+export function doneItem(id) {
+    return {
+        type: 'TOOGLE_DONE',
+        payload: id,
+    }
+}
