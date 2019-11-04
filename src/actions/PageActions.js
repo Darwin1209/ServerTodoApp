@@ -32,3 +32,10 @@ export function doneItem(id) {
         payload: id,
     }
 }
+
+export function importantItem(id) {
+    return {
+        type: 'TOOGLE_IMPORTANT',
+        payload: id,
+    }
+}

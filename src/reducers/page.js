@@ -23,9 +23,14 @@ export function pageReducer(state = initialState, {type, payload}) {
             return { ...state, todoData: newArray };
         case 'TOOGLE_DONE':
             const arrayDone = state.todoData;
-            let id = arrayDone.findIndex( (el) => el.id === payload)
-            arrayDone[id]['done'] = !arrayDone[id]['done'];
+            let idDone = arrayDone.findIndex( (el) => el.id === payload)
+            arrayDone[idDone]['done'] = !arrayDone[idDone]['done'];
             return { ...state, todoData: arrayDone };
+        case 'TOOGLE_IMPORTANT':
+            const arrayImportant = state.todoData;
+            let idImportant = arrayImportant.findIndex( (el) => el.id === payload)
+            arrayImportant[idImportant]['important'] = !arrayImportant[idImportant]['important'];
+            return { ...state, todoData: arrayImportant };
         default:
             return state;
     }
