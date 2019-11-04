@@ -31,14 +31,6 @@ import './App.css'
 
 class App extends React.Component {
     
-    maxId = 100;
-
-    state = {
-
-        term : '',
-        filter: 'all' //all, active, done
-    }
-
     /*createItem = (text) => {
 
         const newItem = this.createTodoItem(text);
@@ -101,14 +93,9 @@ class App extends React.Component {
         }
     }
 
-    onFilterChange = (filter) => {
-        this.setState ( {filter} );
-    }
-
     render() {
-        const { filter } = this.state;
-        const { todoData } = this.props.page;
-        const visibleItems = this.filter( this.search(todoData, this.props.page.term), filter);
+        const { todoData, filter, term } = this.props.page;
+        const visibleItems = this.filter( this.search(todoData, term), filter);
         const doneCount = todoData.filter((el) => el.done).length;
         const todoCount = todoData.length - doneCount;
 
@@ -145,10 +132,10 @@ class App extends React.Component {
             <div className="todo-app">
                 <AppHeader toDo={todoCount} done={doneCount}/>
                 <div className="top-panel d-flex">
-                <Search onSearchChange = { this.props.setTermAction }/>
+                    <Search onSearchChange = { this.props.setTermAction }/>
                     <ItemStatusFilter 
                         filter={filter}
-                        onFilterChange={this.onFilterChange}
+                        onFilterChange={this.props.setFilterAction}
                     />
                 </div>
                 <TodoList 
