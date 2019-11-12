@@ -25,7 +25,7 @@ class TodoListItem extends React.Component {
          
         return (
             <div className={ classNames }>
-                <span 
+                <span
                     className="todo-list-item-label"
                     onClick = { onToggleDone }>
                     { label }

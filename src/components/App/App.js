@@ -47,6 +47,9 @@ class App extends React.Component {
 
         return (
             <div className="todo-app">
+                <Header />
+                <Pages />
+                <Footer />
                 <AppHeader toDo={todoCount} done={doneCount}/>
                 <div className="top-panel d-flex">
                     <Search onSearchChange = { this.props.setTermAction }/>

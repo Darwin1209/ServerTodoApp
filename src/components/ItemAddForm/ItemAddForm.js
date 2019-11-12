@@ -5,9 +5,10 @@ import './ItemAddForm.css';
 class ItemAddForm extends React.Component {
 
     maxId = 101;
+
     state = {
         label: ''
-    }
+    };
 
     createItem(label) {
         return {
@@ -16,7 +17,7 @@ class ItemAddForm extends React.Component {
             done: false,
             id: this.maxId++
         }
-    }
+    };
 
     onLabelChange = (event) => {
         this.setState({
@@ -26,10 +27,15 @@ class ItemAddForm extends React.Component {
 
     onSubmit = (event) => {
         event.preventDefault();
+        if (this.state.label.length < 1)
+            return;
+        if (this.state.label.split(' ').length - 1 === this.state.label.length) {
+            return;
+        } 
         let tast = this.createItem(this.state.label);
         this.props.onCreate(tast);
         this.setState ( {label: '' });
-    }
+    };
 
     render() {
         
