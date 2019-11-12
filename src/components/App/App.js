@@ -1,4 +1,5 @@
 import React from 'react';
+//import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import { connect } from 'react-redux';
 import { setTodo, setFilter, setTerm, deleteItem, doneItem, importantItem } from '../../actions/PageActions'
 
@@ -48,7 +49,7 @@ class App extends React.Component {
         return (
             <div className="todo-app">
                 <Header />
-                <Pages />
+                <Page />
                 <Footer />
                 <AppHeader toDo={todoCount} done={doneCount}/>
                 <div className="top-panel d-flex">
