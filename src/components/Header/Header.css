@@ -30,6 +30,6 @@
 }
 
 .header-nav li a:hover {
-    color: red;
+    color: #d585ff;
     cursor: pointer;
 }
