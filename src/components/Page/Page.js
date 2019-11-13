@@ -43,23 +43,25 @@ export default class Page extends React.Component {
     const todoCount = todoData.length - doneCount;
 
     return (
-      <div className="todo-app">
-        <AppHeader toDo={todoCount} done={doneCount} />
-        <div className="top-panel d-flex">
-          <Search onSearchChange={this.props.info.setTermAction} />
-          <ItemStatusFilter
-            filter={filter}
-            onFilterChange={this.props.info.setFilterAction}
+      <div className="wrapper">
+        <div className="todo-app">
+          <AppHeader toDo={todoCount} done={doneCount} />
+          <div className="top-panel d-flex">
+            <Search onSearchChange={this.props.info.setTermAction} />
+            <ItemStatusFilter
+              filter={filter}
+              onFilterChange={this.props.info.setFilterAction}
+            />
+          </div>
+          <TodoList
+            todo={visibleItems}
+            deleteItemAction={this.props.info.deleteItemAction}
+            onToggleDone={this.props.info.doneItemAction}
+            onToggleImportant={this.props.info.importantItemAction}
           />
-        </div>
-        <TodoList
-          todo={visibleItems}
-          deleteItemAction={this.props.info.deleteItemAction}
-          onToggleDone={this.props.info.doneItemAction}
-          onToggleImportant={this.props.info.importantItemAction}
-        />
 
-        <ItemAddForm onCreate={this.props.info.setTodoAction} />
+          <ItemAddForm onCreate={this.props.info.setTodoAction} />
+        </div>
       </div>
     );
   }

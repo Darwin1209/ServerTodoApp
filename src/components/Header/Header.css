@@ -5,12 +5,13 @@
     width: 100%;
     padding: 20px 15px;
     box-sizing: border-box;
-    background-color: #17a2b8;
+    background-color: #3c1555;
     height: 10vh;
 }
 
 .header p {
     margin: 0;
+    color: white;
 }
 
 .header-nav {

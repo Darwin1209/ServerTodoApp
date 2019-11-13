@@ -1,5 +1,5 @@
 import React from "react";
-
+import './ItemStatusFilter.css';
 class ItemStatusFilter extends React.Component {
   buttons = [
     { name: "all", label: "Все" },

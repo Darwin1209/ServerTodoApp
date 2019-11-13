@@ -1,7 +1,12 @@
+  .wrapper {
+    height: 80vh;
+    width: 100%;
+    background: linear-gradient(45deg, #d585ff, #00ffee);
+  }
+  
   .todo-app {
     margin: 2rem auto 0 auto;
     width: 600px;
-    height: 80vh;
   }
   
   .top-panel {
