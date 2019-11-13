@@ -1,7 +1,7 @@
 const initialState = {
-    name: "user",
-}
+  name: "user"
+};
 
 export function userReducer(state = initialState) {
-    return state;
+  return state;
 }
