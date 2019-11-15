@@ -60,7 +60,7 @@ export default class Page extends React.Component {
             onToggleImportant={this.props.info.importantItemAction}
           />
 
-          <ItemAddForm onCreate={this.props.info.setTodoAction} />
+          <ItemAddForm prop={this.props.info} onCreate={this.props.info.setTodoAction} />
         </div>
       </div>
     );

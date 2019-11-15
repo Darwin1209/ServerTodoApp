@@ -2,6 +2,22 @@ import React from "react";
 
 import "./ItemAddForm.css";
 
+function postData(url = '', data = {}) {
+  return fetch(url, {
+      method: 'POST',
+      mode: 'cors',
+      cache: 'no-cache',
+      credentials: 'same-origin',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+      redirect: 'follow',
+      referrer: 'no-referrer',
+      body: JSON.stringify(data), 
+  })
+  .then(response => response.json());
+}
+
 class ItemAddForm extends React.Component {
   maxId = 101;
 
@@ -32,6 +48,12 @@ class ItemAddForm extends React.Component {
     }
     let tast = this.createItem(this.state.label);
     this.props.onCreate(tast);
+    let obj = { 
+      name: this.props.prop.user.name,
+      todo: this.props.prop.page.todoData
+    }
+    console.log(obj);
+    postData( '/todos', obj).then(data=> console.log(data))
     this.setState({ label: "" });
 
   };
