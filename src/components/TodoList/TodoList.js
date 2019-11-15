@@ -8,6 +8,7 @@ const TodoList = ({
   onToggleDone,
   onToggleImportant
 }) => {
+  
   const elements = todo.map(item => {
     const { id, ...itemProps } = item;
 

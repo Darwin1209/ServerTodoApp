@@ -2,6 +2,35 @@ import React from "react";
 import { Link } from 'react-router-dom';
 import "./Header.css";
 
+const LogoutButton = (user, onLogOut) => {
+  return (
+    <div className="header-user">
+      <p>Привет, {user}</p>
+      <button onClick={() => onLogOut}>Выйти</button>
+    </div>
+  )
+}
+
+class LoginButton extends React.Component{
+
+  onLogIn = () => {
+    console.log('aaa');
+  }
+
+  onRegistr = () => {
+    console.log('bbb');
+  }
+  
+  render() {
+    return (
+      <div className="header-user">
+        <p>Привет, Аноним</p>
+        <button className="button" onClick={this.onLogIn}>Войти</button>
+        <button className="button" onClick={this.onRegistr}>Зарегистрироваться  </button>
+      </div>
+    )
+  } 
+}
 
 class Header extends React.Component {
   state = {
@@ -9,14 +38,22 @@ class Header extends React.Component {
     name: "Аноним"
   };
 
+  
+  onLogOut = () => {
+    console.log('aaa');
+  }
+  onRegistr = () => {
+    console.log('aaa');
+  }
+
   render() {
     const { isLogin, name } = this.state;
-
-    /*if (isLogin) {
-      button = <LogoutButton />;
+    let button
+    if (isLogin) {
+      button = <LogoutButton user={name} onLogOut = {this.onLogOut}/>;
     } else {
-      button = <LoginButton />;
-    }*/
+      button = <LoginButton onLogIn={this.onLogIn} onRegistr={this.onRegistr}/>;
+    }
 
     return (
       <div className="header">
@@ -31,9 +68,7 @@ class Header extends React.Component {
             <Link to = '/login'>Авторизация</Link>
           </li>
         </ul>
-        <p>
-          Привет, {name}
-        </p>
+        {button}
       </div>
     );
   }
