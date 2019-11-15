@@ -12,10 +12,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById("root")
 );
-
-function storeChange(){
- console.log(store.getState());
-}
-
-const sub = store.subscribe(storeChange);
-sub();

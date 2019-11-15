@@ -12,6 +12,8 @@ import {
 
 import Page from "../Page";
 import Header from "../Header";
+import RegistForm from "../RegistForm";
+
 import "./App.css";
 
 function postData(url = '', data = {}) {
@@ -60,6 +62,12 @@ class App extends React.Component {
             render={() => (
               <Page info={this.props.page}/>
             )}/>
+          <Route 
+            path="/registration"
+            render={() => (
+              <RegistForm/>
+            )}
+            />
         </Router>        
       </div>
     );

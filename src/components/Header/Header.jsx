@@ -65,7 +65,7 @@ class Header extends React.Component {
             <Link to = '/todoList'>Список дел</Link>
           </li>
           <li>
-            <Link to = '/login'>Авторизация</Link>
+            <Link to = '/registration'>Авторизация</Link>
           </li>
         </ul>
         {button}

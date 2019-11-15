@@ -1,9 +1,28 @@
 [
-    {
-        "name":"anonim",
-        "anonim": {
-            "password":"abcdefg",
-            "todo":[]
+  {
+    "name": "anonim",
+    "anonim": {
+      "password": "abcdefg",
+      "todo": [
+        {
+          "label": "dwadawdawwffg",
+          "important": false,
+          "done": true,
+          "id": 101
+        },
+        {
+          "label": "fawfr",
+          "important": true,
+          "done": false,
+          "id": 102
+        },
+        {
+          "label": "czecr",
+          "important": true,
+          "done": false,
+          "id": 103
         }
+      ]
     }
+  }
 ]
