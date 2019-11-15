@@ -1,7 +1,5 @@
 const initialState = {
-  todoData: [
-    { label: "Добавьте свою задачу!", important: false, done: false, id: 100 }
-  ],
+  todoData: [],
   term: "",
   filter: "all"
 };
