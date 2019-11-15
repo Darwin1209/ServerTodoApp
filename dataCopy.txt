@@ -1,22 +1,9 @@
 [
     {
-        "name":"Lera",
-        "Lera": {
+        "name":"anonim",
+        "anonim": {
             "password":"abcdefg",
             "todo":[]
-        }
-    },
-    {
-        "name":"Denis",
-        "Denis": {
-            "password":"jopa",
-            "todo":[]
-        }
-    },
-    {   "name":"Lerosy",
-        "Lerosy": {
-            "password":"jopa",
-            "todo":[{"label":"Попить чай","important":false,"done":false,"id":103}]
         }
     }
 ]

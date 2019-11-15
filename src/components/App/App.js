@@ -30,9 +30,20 @@ function postData(url = '', data = {}) {
   .then(response => response.json());
 }
 
+function pushBD(store) {
+  let obj = { 
+    name: store.user.name,
+    todo: store.page.todoData
+  }
+  console.log(obj);
+  postData( '/todos', obj).then(data=> console.log(data));
+};
+
 class App extends React.Component {
-  
+
   render() {
+
+    pushBD(this.props);
 
     return (
       <div className="app">
@@ -80,12 +91,6 @@ class App extends React.Component {
 }
 
 const mapStateToProps = store => {
-  let obj = { 
-    name: store.user.name,
-    todo: store.page.todoData
-  }
-  console.log(obj);
-  postData( '/todos', obj).then(data=> console.log(data))
   return {
     user: store.user,
     page: store.page

@@ -13,4 +13,9 @@ ReactDOM.render(
   document.getElementById("root")
 );
 
-console.log(store.getState());
+function storeChange(){
+ console.log(store.getState());
+}
+
+const sub = store.subscribe(storeChange);
+sub();

@@ -1,1 +1,9 @@
-[{"name":"Lera","Lera":{"password":"abcdefg","todo":[]}},{"name":"Denis","Denis":{"password":"jopa","todo":[]}},{"name":"Lerosy","Lerosy":{"password":"jopa","todo":[]}},{"name":"anonim","anonim":{"password":"jopa","todo":[{"label":"Дафацфацфа","important":false,"done":true,"id":101}]}}]
+[
+    {
+        "name":"anonim",
+        "anonim": {
+            "password":"abcdefg",
+            "todo":[]
+        }
+    }
+]
