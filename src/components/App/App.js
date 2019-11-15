@@ -14,9 +14,24 @@ import Page from "../Page";
 import Header from "../Header";
 import "./App.css";
 
+function postData(url = '', data = {}) {
+  return fetch(url, {
+      method: 'POST',
+      mode: 'cors',
+      cache: 'no-cache',
+      credentials: 'same-origin',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+      redirect: 'follow',
+      referrer: 'no-referrer',
+      body: JSON.stringify(data), 
+  })
+  .then(response => response.json());
+}
+
 class App extends React.Component {
   
-
   render() {
 
     return (
@@ -65,7 +80,12 @@ class App extends React.Component {
 }
 
 const mapStateToProps = store => {
-  console.log(store);
+  let obj = { 
+    name: store.user.name,
+    todo: store.page.todoData
+  }
+  console.log(obj);
+  postData( '/todos', obj).then(data=> console.log(data))
   return {
     user: store.user,
     page: store.page
