@@ -1,7 +1,5 @@
 const initialState = {
   todoData: [],
-  term: "",
-  filter: "all"
 };
 
 export function pageReducer(state = initialState, { type, payload }) {
@@ -10,10 +8,6 @@ export function pageReducer(state = initialState, { type, payload }) {
       let array = state.todoData;
       array.push(payload);
       return { ...state, todoData: array };
-    case "SET_FILTER":
-      return { ...state, filter: payload };
-    case "SET_TERM":
-      return { ...state, term: payload };
     case "DELETE_ITEM":
       let idx = state.todoData.findIndex(el => el.id === payload);
       const newArray = [
@@ -33,6 +27,8 @@ export function pageReducer(state = initialState, { type, payload }) {
         "important"
       ];
       return { ...state, todoData: arrayImportant };
+    case "FETCH_TODO_SUCCESS":
+      return {...state, todoData : payload};
     default:
       return state;
   }

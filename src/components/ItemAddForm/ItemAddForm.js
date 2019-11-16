@@ -3,8 +3,7 @@ import React from "react";
 import "./ItemAddForm.css";
 
 class ItemAddForm extends React.Component {
-  maxId = 101;
-
+  
   state = {
     label: ""
   };
@@ -14,7 +13,7 @@ class ItemAddForm extends React.Component {
       label,
       important: false,
       done: false,
-      id: this.maxId++
+      id: new Date(),
     };
   }
 

@@ -1,21 +1,23 @@
+function postData(url = '', data = {}) {
+  return fetch(url, {
+      method: 'POST',
+      mode: 'cors',
+      cache: 'no-cache',
+      credentials: 'same-origin',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+      redirect: 'follow',
+      referrer: 'no-referrer',
+      body: JSON.stringify(data), 
+  })
+  .then(response => response.json());
+}
+
 export function setTodo(task) {
   return {
     type: "SET_TODO",
     payload: task
-  };
-}
-
-export function setFilter(filt) {
-  return {
-    type: "SET_FILTER",
-    payload: filt
-  };
-}
-
-export function setTerm(term) {
-  return {
-    type: "SET_TERM",
-    payload: term
   };
 }
 
@@ -40,3 +42,15 @@ export function importantItem(id) {
   };
 }
 
+export const getTodo = (name) => dispatch => {
+  postData('/todoGet', { name })
+  .then(data => {
+    console.log(data);
+    dispatch({ type: "FETCH_TODO_SUCCESS", payload: data});
+  })
+}
+
+/*export const setTodo = (name, data) => dispatch => {
+  postData('/todoGet', { name, data })
+  .then
+}*/
