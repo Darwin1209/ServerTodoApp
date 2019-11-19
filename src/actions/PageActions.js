@@ -33,7 +33,6 @@ export function setTodo(task) {
 
 export function deleteItem(id) {
   return (dispatch,getState) =>{
-    console.log(getState());
     const { user } = getState();
     let newArray = getState().page.todoData.filter(el => el.id !== id);
     dispatch( setTodoFetch(user.name, newArray));

@@ -12,17 +12,17 @@ import {
 
 class TodoListItem extends React.Component {
   onToggleDone = ()=> {
-    const {onToggleDone,id, setTodoFetch, user, page} = this.props
+    const {onToggleDone, id} = this.props
     onToggleDone(id);
   }
 
   onToggleImportant = ()=> {
-    const {onToggleImportant,id, setTodoFetch, user, page} = this.props
+    const {onToggleImportant, id} = this.props
     onToggleImportant(id);
   }
 
   deleteItem = ()=> {
-    const { deleteItemAction ,id, setTodoFetch, user, page} = this.props
+    const { deleteItemAction, id} = this.props
     deleteItemAction(id);
   }
 
