@@ -4,9 +4,6 @@ import "./TodoList.css";
 
 const TodoList = ({
   todo,
-  deleteItemAction,
-  onToggleDone,
-  onToggleImportant
 }) => {
   
   const elements = todo.map(item => {
@@ -16,9 +13,6 @@ const TodoList = ({
       <li key={id} className="list-group-item">
         <TodoListItem
           {...itemProps}
-          deleteItemAction={() => deleteItemAction(id)}
-          onToggleDone={() => onToggleDone(id)}
-          onToggleImportant={() => onToggleImportant(id)}
           id={id}
         />
       </li>

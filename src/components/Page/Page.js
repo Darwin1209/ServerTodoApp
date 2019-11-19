@@ -1,4 +1,5 @@
 import React from "react";
+import {bindActionCreators} from 'redux'
 import AppHeader from "../AppHeader";
 import Search from "../Search";
 import TodoList from "../TodoList";
@@ -11,7 +12,8 @@ import {
   deleteItem,
   doneItem,
   importantItem,
-  getTodo
+  getTodo,
+  setTodoFetch
 } from "../../actions/PageActions";
 
 import {
@@ -81,10 +83,10 @@ class Page extends React.Component {
   }
 
   componentDidUpdate( prevProps ) {
-    if (this.props.page.todoData === prevProps.page.todoData){
+    /*if (this.props.page.todoData === prevProps.page.todoData){
       console.log("Поменялся paage");
       pushBD(this.props.user.name, this.props.page.todoData);
-    } console.log(this.props.page.todoData, prevProps.page.todoData)
+    } console.log(this.props.page.todoData, prevProps.page.todoData)*/
   }
 
   render() {
@@ -108,9 +110,6 @@ class Page extends React.Component {
           </div>
           <TodoList
             todo={visibleItems}
-            deleteItemAction={this.props.deleteItemAction}
-            onToggleDone={this.props.doneItemAction}
-            onToggleImportant={this.props.importantItemAction}
           />
 
           <ItemAddForm prop={this.props} onCreate={this.props.setTodoAction} />
@@ -128,17 +127,17 @@ const mapStateToProps = store => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    setTodoAction: todo => dispatch(setTodo(todo)),
-    setTermAction: term => dispatch(setTerm(term)),
-    setFilterAction: filt => dispatch(setFilter(filt)),
-    deleteItemAction: id => dispatch(deleteItem(id)),
-    doneItemAction: id => dispatch(doneItem(id)),
-    importantItemAction: id => dispatch(importantItem(id)),
-    getTodoAction: user => dispatch(getTodo(user)),
-  };
-};
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+  setTodoAction: setTodo,
+  deleteItemAction: deleteItem,
+  doneItemAction: doneItem,
+  importantItemAction: importantItem,
+  getTodoAction: getTodo,
+  setTodoFetch: setTodoFetch,
+  setFilterAction :setFilter,
+  setTermAction : setTerm,
+},dispatch)
 
 export default connect(
   mapStateToProps,

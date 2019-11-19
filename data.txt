@@ -7,20 +7,14 @@
         {
           "label": "fawfawf",
           "important": true,
-          "done": true,
+          "done": false,
           "id": 101
         },
         {
           "label": "gwagwa",
-          "important": false,
-          "done": true,
-          "id": 102
-        },
-        {
-          "label": "gaw wvfsfgb",
           "important": true,
-          "done": true,
-          "id": 103
+          "done": false,
+          "id": 102
         }
       ]
     }

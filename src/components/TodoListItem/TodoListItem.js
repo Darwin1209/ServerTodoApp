@@ -1,5 +1,14 @@
 import React from "react";
+import {bindActionCreators} from 'redux'
+import { connect } from 'react-redux'
 import "./TodoListItem.css";
+
+import {
+  deleteItem,
+  doneItem,
+  importantItem,
+  setTodoFetch
+} from "../../actions/PageActions";
 
 class TodoListItem extends React.Component {
   render() {
@@ -9,7 +18,9 @@ class TodoListItem extends React.Component {
       onToggleImportant,
       onToggleDone,
       done,
-      important
+      important,
+      setTodoFetch,
+      id,
     } = this.props;
 
     let classNames = "todo-list-item";
@@ -23,14 +34,14 @@ class TodoListItem extends React.Component {
 
     return (
       <div className={classNames}>
-        <span className="todo-list-item-label" onClick={onToggleDone}>
+        <span className="todo-list-item-label" onClick={()=>onToggleDone(id)}>
           {label}
         </span>
 
         <button
           type="button"
           className="btn btn-outline-success btn-sm float-right"
-          onClick={onToggleImportant}
+          onClick={()=> onToggleImportant(id)}
         >
           <i className="fa fa-exclamation" />
         </button>
@@ -38,7 +49,7 @@ class TodoListItem extends React.Component {
         <button
           type="button"
           className="btn btn-outline-danger btn-sm float-right"
-          onClick={deleteItemAction}
+          onClick={()=> deleteItemAction(id)}
         >
           <i className="fa fa-trash-o" />
         </button>
@@ -47,4 +58,21 @@ class TodoListItem extends React.Component {
   }
 }
 
-export default TodoListItem;
+const mapStateToProps = store => {
+  return {
+    user: store.user,
+    page: store.page,
+  };
+};
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+  deleteItemAction: deleteItem,
+  onToggleDone: doneItem,
+  onToggleImportant: importantItem,
+  setTodoFetch: setTodoFetch,
+},dispatch)
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TodoListItem);

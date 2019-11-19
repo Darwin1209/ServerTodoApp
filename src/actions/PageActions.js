@@ -50,7 +50,9 @@ export const getTodo = (name) => dispatch => {
   })
 }
 
-/*export const setTodo = (name, data) => dispatch => {
-  postData('/todoGet', { name, data })
-  .then
-}*/
+export const setTodoFetch = (name, data) => {
+  postData('/todos', { name, data })
+  .then(response => {
+    console.log(response.json());
+  })
+}
