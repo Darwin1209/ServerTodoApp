@@ -9,6 +9,7 @@ import { connect } from "react-redux";
 
 import {
   getTodo,
+  setTodo,
 } from "../../actions/PageActions";
 
 import {
@@ -73,7 +74,6 @@ class Page extends React.Component {
           <TodoList
             todo={visibleItems}
           />
-
           <ItemAddForm prop={this.props} onCreate={this.props.setTodoAction} />
         </div>
       </div>
@@ -94,6 +94,7 @@ const mapDispatchToProps = dispatch => bindActionCreators({
   getTodoAction: getTodo,
   setFilterAction :setFilter,
   setTermAction : setTerm,
+  setTodoAction : setTodo,
 },dispatch)
 
 export default connect(

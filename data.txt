@@ -5,10 +5,46 @@
       "password": "abcdefg",
       "todo": [
         {
-          "label": "вфцацфаца",
+          "label": "Создать авторизацию и регистрацию",
+          "important": true,
+          "done": false,
+          "id": "2019-11-19T22:21:09.524Z"
+        },
+        {
+          "label": "Написать тесты",
+          "important": true,
+          "done": false,
+          "id": "2019-11-19T22:21:16.671Z"
+        },
+        {
+          "label": "Загуглить про develpment и production режимы в webpack",
           "important": false,
           "done": false,
-          "id": "2019-11-19T20:33:48.974Z"
+          "id": "2019-11-19T22:23:51.097Z"
+        },
+        {
+          "label": "Eslint",
+          "important": false,
+          "done": false,
+          "id": "2019-11-19T22:24:01.028Z"
+        },
+        {
+          "label": "Перенести бэк на бд",
+          "important": false,
+          "done": false,
+          "id": "2019-11-19T22:24:14.743Z"
+        },
+        {
+          "label": "WebSocket",
+          "important": false,
+          "done": false,
+          "id": "2019-11-19T22:24:21.957Z"
+        },
+        {
+          "label": "Переписать CSS",
+          "important": true,
+          "done": false,
+          "id": "2019-11-19T22:45:09.255Z"
         }
       ]
     }

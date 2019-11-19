@@ -38,7 +38,7 @@ export function deleteItem(id) {
     dispatch( setTodoFetch(user.name, newArray));
     dispatch({
       type: 'DELETE_ITEM',
-      payload:newArray
+      payload: newArray
     })
   }
 }

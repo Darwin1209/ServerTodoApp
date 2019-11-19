@@ -38,13 +38,14 @@ const RegistForm = () => (
         <Form
         onSubmit={onSubmit}
         render={({ handleSubmit, form, submitting, pristine }) => (
-            <form onSubmit={handleSubmit} className="transparent">
-                <div className="form-inner">
+            <div className="block">    
+                <form onSubmit={handleSubmit} className="form-inner">
+                    <h1>Авторизация</h1>
                     <Field name="login" validate={required}>
                         {({ input, meta }) => (
                         <div>
-                            <label for="log">Ваш логин</label>
-                            <input {...input} type="text" placeholder="Ваш логин" id="log"/>
+                            <label className="my__label" htmlFor="log">Ваш логин</label>
+                            <input className="my__input" {...input} type="text" placeholder="Ваш логин" id="log"/>
                             {meta.error && meta.touched && <span>{meta.error}</span>}
                         </div>
                         )}
@@ -52,36 +53,29 @@ const RegistForm = () => (
                     <Field name="password" validate={composeValidators(required, passStrong)}>
                         {({ input, meta }) => (
                         <div>
-                            <label for="pas">Ваш пароль</label>
-                            <input {...input} type="password" placeholder="Ваш пароль" id="pas"/>
+                            <label className="my__label" htmlFor="pas">Ваш пароль</label>
+                            <input className="my__input" {...input} type="password" placeholder="Ваш пароль" id="pas"/>
                             {meta.error && meta.touched && <span>{meta.error}</span>}
                         </div>
                         )}
                     </Field>
-                    <label for="custom-checkbox">
+                    <label htmlFor="custom-checkbox">
                         <Field
-                        name="sauces"
+                        name="checked"
                         component="input"
                         type="checkbox"
-                        value="rememb"
+                        value="true"
                         id="custom-checkbox"
                         />{' '}
                         Запомнить меня?
                     </label>
                     <div className="buttons">
                         <button type="submit" disabled={submitting}>
-                        Submit
-                        </button>
-                        <button
-                        type="button"
-                        onClick={form.reset}
-                        disabled={submitting || pristine}
-                        >
-                        Reset
+                            Войти
                         </button>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         )}
         />
     </div>
