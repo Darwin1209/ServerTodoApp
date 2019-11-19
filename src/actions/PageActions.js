@@ -19,45 +19,57 @@ function postData(url = '', data = {}) {
 
 
 export function setTodo(task) {
-  return {
-    type: "SET_TODO",
-    payload: task
-  };
+  return (dispatch,getState) =>{
+    const { user } = getState();
+    let newArray = getState().page.todoData;
+    newArray.push(task);
+    dispatch( setTodoFetch(user.name, newArray));
+    dispatch({
+      type: 'SET_TODO',
+      payload: newArray
+    })
+  }
 }
 
 export function deleteItem(id) {
- 
- return (dispatch,getState) =>{
-  console.log(getState());
-  const { user } = getState();
-  let newArray = getState().page.todoData.filter(el => el.id !== id);
-  dispatch( setTodoFetch(user.name, newArray))
-
-dispatch({
-
-  type: 'DELETE_ITEM',
-  payload:newArray
-})
-
- }
-  return {
-    type: "DELETE_ITEM",
-    payload: id
-  };
+  return (dispatch,getState) =>{
+    console.log(getState());
+    const { user } = getState();
+    let newArray = getState().page.todoData.filter(el => el.id !== id);
+    dispatch( setTodoFetch(user.name, newArray));
+    dispatch({
+      type: 'DELETE_ITEM',
+      payload:newArray
+    })
+  }
 }
 
 export function doneItem(id) {
-  return {
-    type: "TOOGLE_DONE",
-    payload: id
-  };
+  return (dispatch, getState) => {
+    const { user } = getState();
+    let newArray = getState().page.todoData;
+    let index = newArray.findIndex(el => el.id === id);
+    newArray[index]["done"] = !newArray[index]["done"];
+    dispatch( setTodoFetch(user.name, newArray ));
+    dispatch({
+      type: "TOOGLE_DONE",
+      payload: newArray
+    });
+  }
 }
 
 export function importantItem(id) {
-  return {
-    type: "TOOGLE_IMPORTANT",
-    payload: id
-  };
+  return (dispatch, getState) => {
+    const { user } = getState();
+    let newArray = getState().page.todoData;
+    let index = newArray.findIndex(el => el.id === id);
+    newArray[index]["important"] = !newArray[index]["important"];
+    dispatch( setTodoFetch(user.name, newArray ));
+    dispatch({
+      type: "TOOGLE_IMPORTANT",
+      payload: newArray
+    });
+  }
 }
 
 export const getTodo = (name) => dispatch => {

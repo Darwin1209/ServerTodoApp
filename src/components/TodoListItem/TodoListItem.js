@@ -14,21 +14,16 @@ class TodoListItem extends React.Component {
   onToggleDone = ()=> {
     const {onToggleDone,id, setTodoFetch, user, page} = this.props
     onToggleDone(id);
-    console.log(user.name, page.todoData);
-    setTodoFetch(user.name, page.todoData);
   }
 
   onToggleImportant = ()=> {
     const {onToggleImportant,id, setTodoFetch, user, page} = this.props
     onToggleImportant(id);
-    setTodoFetch(user.name, page.todoData);
   }
 
   deleteItem = ()=> {
     const { deleteItemAction ,id, setTodoFetch, user, page} = this.props
     deleteItemAction(id);
-    console.log(page.todoData);
-    // setTodoFetch(user.name, page.todoData);
   }
 
   render() {
