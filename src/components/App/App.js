@@ -21,11 +21,6 @@ export default class App extends React.Component {
             )}
             exact/>
           <Route 
-            path="/fasfasf" 
-            render={() => (
-              <Page info={this.props.page}/>
-            )}/>
-          <Route 
             path="/registration"
             render={() => (
               <RegistForm/>

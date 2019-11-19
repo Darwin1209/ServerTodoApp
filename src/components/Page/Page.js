@@ -8,10 +8,6 @@ import ItemAddForm from "../ItemAddForm";
 import { connect } from "react-redux";
 
 import {
-  setTodo,
-  deleteItem,
-  doneItem,
-  importantItem,
   getTodo,
 } from "../../actions/PageActions";
 
@@ -95,10 +91,6 @@ const mapStateToProps = store => {
 
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  setTodoAction: setTodo,
-  deleteItemAction: deleteItem,
-  doneItemAction: doneItem,
-  importantItemAction: importantItem,
   getTodoAction: getTodo,
   setFilterAction :setFilter,
   setTermAction : setTerm,
