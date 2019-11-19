@@ -11,16 +11,31 @@ import {
 } from "../../actions/PageActions";
 
 class TodoListItem extends React.Component {
+  onToggleDone = ()=> {
+    const {onToggleDone,id, setTodoFetch, user, page} = this.props
+    onToggleDone(id);
+    console.log(user.name, page.todoData);
+    setTodoFetch(user.name, page.todoData);
+  }
+
+  onToggleImportant = ()=> {
+    const {onToggleImportant,id, setTodoFetch, user, page} = this.props
+    onToggleImportant(id);
+    setTodoFetch(user.name, page.todoData);
+  }
+
+  deleteItem = ()=> {
+    const { deleteItemAction ,id, setTodoFetch, user, page} = this.props
+    deleteItemAction(id);
+    console.log(page.todoData);
+    // setTodoFetch(user.name, page.todoData);
+  }
+
   render() {
     const {
       label,
-      deleteItemAction,
-      onToggleImportant,
-      onToggleDone,
       done,
-      important,
-      setTodoFetch,
-      id,
+      important
     } = this.props;
 
     let classNames = "todo-list-item";
@@ -34,14 +49,14 @@ class TodoListItem extends React.Component {
 
     return (
       <div className={classNames}>
-        <span className="todo-list-item-label" onClick={()=>onToggleDone(id)}>
+        <span className="todo-list-item-label" onClick={ this.onToggleDone}>
           {label}
         </span>
 
         <button
           type="button"
           className="btn btn-outline-success btn-sm float-right"
-          onClick={()=> onToggleImportant(id)}
+          onClick={this.onToggleImportant}
         >
           <i className="fa fa-exclamation" />
         </button>
@@ -49,7 +64,7 @@ class TodoListItem extends React.Component {
         <button
           type="button"
           className="btn btn-outline-danger btn-sm float-right"
-          onClick={()=> deleteItemAction(id)}
+          onClick={ this.deleteItem }
         >
           <i className="fa fa-trash-o" />
         </button>

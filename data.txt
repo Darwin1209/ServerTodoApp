@@ -5,16 +5,10 @@
       "password": "abcdefg",
       "todo": [
         {
-          "label": "fawfawf",
+          "label": "fasfawsf",
           "important": true,
           "done": false,
-          "id": 101
-        },
-        {
-          "label": "gwagwa",
-          "important": true,
-          "done": false,
-          "id": 102
+          "id": "2019-11-19T16:54:07.147Z"
         }
       ]
     }

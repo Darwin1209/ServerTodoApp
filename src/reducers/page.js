@@ -9,12 +9,7 @@ export function pageReducer(state = initialState, { type, payload }) {
       array.push(payload);
       return { ...state, todoData: array };
     case "DELETE_ITEM":
-      let idx = state.todoData.findIndex(el => el.id === payload);
-      const newArray = [
-        ...state.todoData.slice(0, idx),
-        ...state.todoData.slice(idx + 1)
-      ];
-      return { ...state, todoData: newArray };
+      return { ...state, todoData: payload };
     case "TOOGLE_DONE":
       const arrayDone = state.todoData;
       let idDone = arrayDone.findIndex(el => el.id === payload);
