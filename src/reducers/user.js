@@ -1,6 +1,5 @@
 const initialState = {
   name: "anonim",
-  fetching: true,
 };
 
 export function userReducer(state = initialState, action) {
