@@ -1,11 +1,11 @@
 import React from "react";
 import {bindActionCreators} from 'redux'
+import { connect } from "react-redux";
 import AppHeader from "../AppHeader";
 import Search from "../Search";
 import TodoList from "../TodoList";
 import ItemStatusFilter from "../ItemStatusFilter";
 import ItemAddForm from "../ItemAddForm";
-import { connect } from "react-redux";
 
 import {
   getTodo,
@@ -57,7 +57,7 @@ class Page extends React.Component {
     if (this.props.user.name === "anonim") {
       return (
         <div className="wrapper">
-          <h1>Необходимо авторизоваться</h1>
+          <h1 className="wrapper__h1">Необходимо авторизоваться</h1>
         </div>
         )
     }

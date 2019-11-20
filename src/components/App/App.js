@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route} from 'react-router-dom'
 import Page from "../Page";
 import Header from "../Header";
-import RegistForm from "../RegistForm";
+import AutorizForm from "../AutorizForm";
 
 import "./App.css";
 
@@ -15,7 +15,7 @@ export default class App extends React.Component {
         <Router>
           <Header />
           <Route 
-            path="/" 
+            path="/todoList" 
             render={() => (
               <Page/>
             )}
@@ -23,7 +23,7 @@ export default class App extends React.Component {
           <Route 
             path="/registration"
             render={() => (
-              <RegistForm/>
+              <AutorizForm/>
             )}
             />
         </Router>        

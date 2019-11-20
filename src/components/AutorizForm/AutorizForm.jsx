@@ -1,7 +1,9 @@
 import React from 'react';
 import { Form, Field } from 'react-final-form';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
-import './RegistForm.css';
+import './AutorizForm.css';
 
 const required = value => {
     return (value ? undefined : 'Поле должно быть заполнено')
@@ -33,7 +35,7 @@ const onSubmit = values => {
 }
 
 
-const RegistForm = () => (
+const AutorizForm = () => (
     <div className="wrapper">
         <Form
         onSubmit={onSubmit}
@@ -50,7 +52,7 @@ const RegistForm = () => (
                         </div>
                         )}
                     </Field>
-                    <Field name="password" validate={composeValidators(required, passStrong)}>
+                    <Field name="password" validate={required}>
                         {({ input, meta }) => (
                         <div>
                             <label className="my__label" htmlFor="pas">Ваш пароль</label>
@@ -81,4 +83,17 @@ const RegistForm = () => (
     </div>
 )
 
-export default RegistForm;
+const mapStateToProps = store => {
+    return {
+      user: store.user,
+    };
+  };
+  
+  
+  const mapDispatchToProps = dispatch => bindActionCreators({
+  },dispatch)
+  
+  export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(AutorizForm);
