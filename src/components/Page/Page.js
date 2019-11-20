@@ -49,10 +49,19 @@ class Page extends React.Component {
   }
   
   componentDidMount() {
-    this.props.getTodoAction(this.props.user.name);
+    if (this.props.user.name !== "anonim")
+      this.props.getTodoAction(this.props.user.name);
   }
 
   render() {
+    if (this.props.user.name === "anonim") {
+      return (
+        <div className="wrapper">
+          <h1>Необходимо авторизоваться</h1>
+        </div>
+        )
+    }
+    
     const { todoData } = this.props.page;
     const { filter, term } = this.props.filter;
     const visibleItems = this.filter(this.search(todoData, term), filter);

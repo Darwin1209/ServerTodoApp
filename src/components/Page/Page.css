@@ -4,6 +4,12 @@
     background: linear-gradient(45deg, #d585ff, #00ffee);
   }
   
+  .wrapper h1 {
+    display: block;
+    margin-top: 60px;
+    text-align: center;
+  }
+
   .todo-app {
     margin: 2rem auto 0 auto;
     width: 600px;

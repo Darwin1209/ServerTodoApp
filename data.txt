@@ -1,8 +1,8 @@
 [
   {
-    "name": "anonim",
-    "anonim": {
-      "password": "abcdefg",
+    "name": "Denis",
+    "Denis": {
+      "password": "Qwerty123",
       "todo": [
         {
           "label": "Создать авторизацию и регистрацию",
