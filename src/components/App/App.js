@@ -1,12 +1,22 @@
 import React from "react";
 import { BrowserRouter as Router, Route} from 'react-router-dom'
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import Page from "../Page";
 import Header from "../Header";
 import AutorizForm from "../AutorizForm";
 
+import { localUser } from "../../actions/UserActions";
+
 import "./App.css";
 
-export default class App extends React.Component {
+class App extends React.Component {
+
+  componentDidMount() {
+    if (localStorage.getItem("user") !== null) {
+      this.props.localUser(localStorage.getItem("user"));
+    }
+  }
 
   render() {
 
@@ -15,11 +25,17 @@ export default class App extends React.Component {
         <Router>
           <Header />
           <Route 
-            path="/todoList" 
+            path="/" 
             render={() => (
               <Page/>
             )}
             exact/>
+          <Route 
+            path="/todoList" 
+            render={() => (
+              <Page/>
+            )}
+          />
           <Route 
             path="/registration"
             render={() => (
@@ -55,3 +71,19 @@ export default class App extends React.Component {
     );*/
   }
 }
+
+const mapStateToProps = store => {
+  return {
+    user: store.user,
+  };
+};
+
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+    localUser
+},dispatch)
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

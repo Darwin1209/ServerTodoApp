@@ -1,5 +1,5 @@
   .wrapper {
-    height: 80vh;
+    min-height: 80vh;
     width: 100%;
     background: linear-gradient(45deg, #d585ff, #00ffee);
   }

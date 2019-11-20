@@ -11,9 +11,9 @@ function postData(url = '', data = {}) {
           },
           redirect: 'follow', // manual, *follow, error
           referrer: 'no-referrer', // no-referrer, *client
-          body: JSON.stringify(data), // тип данных в body должен соответвовать значению заголовка "Content-Type"
-      })
-      .then(response => response.json()) // парсит JSON ответ в Javascript объект
+          body: JSON.stringify(data),
+    })
+      .then(response => response.json())
       .catch((e)=>console.error(e))
 }
 
@@ -26,11 +26,12 @@ export function registrUser(user) {
 
 export function verificateUser(user) {
     return (dispatch) => {
-        console.log("Вызвался DISPATCH из USER");
         postData('/verificate', user)
         .then(response => {
-            console.log(response);
             if (response.status === "OK") {
+                if (user.checked[0] === "true") {
+                    localStorage.setItem("user", user.login);
+                }
                 dispatch({
                     type: 'VERIFICATE_USER',
                     payload: user.login
@@ -42,3 +43,9 @@ export function verificateUser(user) {
     }
 }
 
+export function localUser() {
+    return {
+        type: 'LOCAL_USER',
+        payload: localStorage.getItem("user"),
+    }
+}
