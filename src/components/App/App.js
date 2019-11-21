@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import Page from "../Page";
 import Header from "../Header";
 import AutorizForm from "../AutorizForm";
+import RegistrForm from "../RegistrForm";
 import Main from "../Main";
 import Footer from "../Footer";
 
@@ -47,7 +48,7 @@ class App extends React.Component {
           <Route 
             path="/registration"
             render={() => (
-              <AutorizForm/>
+              <RegistrForm/>
             )}
           />
           <Footer />
