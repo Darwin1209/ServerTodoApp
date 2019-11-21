@@ -25,7 +25,7 @@ class App extends React.Component {
     return (
       <div className="app">
         <Router>
-          <Header />
+          <Header user = { this.props.user.name }/>
           <Route 
             path="/" 
             render={() => (
@@ -83,7 +83,7 @@ const mapStateToProps = store => {
 
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-    localUser
+    localUser,
 },dispatch)
 
 export default connect(
