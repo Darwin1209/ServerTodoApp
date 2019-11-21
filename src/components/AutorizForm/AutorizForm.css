@@ -4,7 +4,7 @@
   width: 400px;
   min-height: 400px;
   background-color: #fff;
-  padding:60px;
+  padding:40px;
   border-radius: 25px;
 }
 
@@ -43,4 +43,8 @@
   font-weight: 500;
   text-transform: uppercase;
   cursor: pointer;
+}
+
+.buttons {
+  margin-top:20px;
 }
