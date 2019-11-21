@@ -38,7 +38,7 @@ export function verificateUser(user) {
         postData('/verificate', user)
         .then(response => {
             if (response.status === "OK") {
-                if (user.checked[0] === "true") {
+                if (user.checked) {
                     localStorage.setItem("user", user.login);
                 }
                 dispatch({
