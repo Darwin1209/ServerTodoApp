@@ -52,10 +52,14 @@ export function verificateUser(user) {
                 dispatch({
                     type: 'VERIFICATE_USER',
                     payload: user.login,
-                    status: "OK"
+                    status: response.status
                 });
-            } else if (response.status === "INVALID_PASSWORD") {
-                console.log("Неверный пароль");
+            } else {
+                dispatch({
+                    type: 'VERIFICATE_USER',
+                    payload: "anonim",
+                    status: response.status
+                })
             }
         })
     }
