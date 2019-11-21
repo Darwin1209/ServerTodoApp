@@ -55,30 +55,6 @@ class App extends React.Component {
         </Router>        
       </div>
     );
-
-    /*return (
-      <div className="todo-app">
-        <Header />
-        <Page />
-        <Footer />
-        <AppHeader toDo={todoCount} done={doneCount} />
-        <div className="top-panel d-flex">
-          <Search onSearchChange={this.props.setTermAction} />
-          <ItemStatusFilter
-            filter={filter}
-            onFilterChange={this.props.setFilterAction}
-          />
-        </div>
-        <TodoList
-          todo={visibleItems}
-          deleteItemAction={this.props.deleteItemAction}
-          onToggleDone={this.props.doneItemAction}
-          onToggleImportant={this.props.importantItemAction}
-        />
-
-        <ItemAddForm onCreate={this.props.setTodoAction} />
-      </div>
-    );*/
   }
 }
 

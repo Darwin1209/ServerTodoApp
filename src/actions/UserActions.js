@@ -35,7 +35,8 @@ export function logoutUser() {
     localStorage.removeItem("user");
     return {
         type: 'LOGOUT_USER',
-        payload: 'anonim'
+        payload: 'anonim',
+        status: undefined,
     };
 }
 
@@ -50,7 +51,8 @@ export function verificateUser(user) {
                 }
                 dispatch({
                     type: 'VERIFICATE_USER',
-                    payload: user.login
+                    payload: user.login,
+                    status: "OK"
                 });
             } else if (response.status === "INVALID_PASSWORD") {
                 console.log("Неверный пароль");

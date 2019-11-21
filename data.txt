@@ -57,6 +57,12 @@
           "important": false,
           "done": false,
           "id": "2019-11-21T14:51:48.473Z"
+        },
+        {
+          "label": "Сделать редирект",
+          "important": true,
+          "done": true,
+          "id": "2019-11-21T19:43:55.821Z"
         }
       ]
     }

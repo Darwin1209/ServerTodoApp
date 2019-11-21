@@ -3,6 +3,8 @@ import { Form, Field } from 'react-final-form';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { registrUser } from '../../actions/UserActions';
+import { Redirect } from 'react-router';
+
 
 const passStrong = value => {
     if (value.length < 9) {
@@ -22,77 +24,84 @@ const passStrong = value => {
     return "Пароль слишком слабый";
 }
 
-const RegistrForm = ( { registrUser } ) => {
+class RegistrForm extends React.Component {
 
-    const onSubmit = values => {
-        //registrUser(values);
+    onSubmit = values => {
+        registrUser(values);
         console.log(values);
     }
     
-    return(
-        <div className="wrapper">
-            <Form
-                onSubmit={onSubmit}
-                validate={values => {
-                    const errors = {}
-                    if (!values.login) {
-                        errors.username = 'Поле обязательное'
-                    }
-                    if (!values.password) {
-                        errors.password = 'Поле обязательное'
-                    }
-                    if (values.password) {
-                        errors.password = passStrong(values.password);
-                    }
-                    if (!values.confirm) {
-                        errors.confirm = 'Поле обязательное'
-                    } else if (values.confirm !== values.password) {
-                        errors.confirm = 'Пароли должны совпадать'
-                    }
-                    return errors
-                }}
-                render={({ handleSubmit, form, submitting, pristine }) => (
-                    <div className="block">
-                        <form onSubmit={handleSubmit} className="form-inner">
-                            <h1>Регистрация</h1>
-                            <Field name="login">
-                                {({ input, meta }) => (
-                                <div>
-                                    <label className="my__label">Ваш логин</label>
-                                    <input className="my__input" {...input} type="text" placeholder="Ваш логин" />
-                                    {meta.error && meta.touched && <span>{meta.error}</span>}
+    render() {
+
+        if (this.props.user.status === "OK") {
+            return <Redirect push to="/"/>
+        }
+
+        return(
+            <div className="wrapper">
+                <Form
+                    onSubmit={this.onSubmit}
+                    validate={values => {
+                        const errors = {}
+                        if (!values.login) {
+                            errors.username = 'Поле обязательное'
+                        }
+                        if (!values.password) {
+                            errors.password = 'Поле обязательное'
+                        }
+                        if (values.password) {
+                            errors.password = passStrong(values.password);
+                        }
+                        if (!values.confirm) {
+                            errors.confirm = 'Поле обязательное'
+                        } else if (values.confirm !== values.password) {
+                            errors.confirm = 'Пароли должны совпадать'
+                        }
+                        return errors
+                    }}
+                    render={({ handleSubmit, form, submitting, pristine }) => (
+                        <div className="block">
+                            <form onSubmit={handleSubmit} className="form-inner">
+                                <h1>Регистрация</h1>
+                                <Field name="login">
+                                    {({ input, meta }) => (
+                                    <div>
+                                        <label className="my__label">Ваш логин</label>
+                                        <input className="my__input" {...input} type="text" placeholder="Ваш логин" />
+                                        {meta.error && meta.touched && <span>{meta.error}</span>}
+                                    </div>
+                                    )}
+                                </Field>
+                                <Field name="password">
+                                    {({ input, meta }) => (
+                                    <div>
+                                        <label className="my__label">Ваш пароль</label>
+                                        <input className="my__input" {...input} type="password" placeholder="Ваш пароль" />
+                                        {meta.error && meta.touched && <span>{meta.error}</span>}
+                                    </div>
+                                    )}
+                                </Field>
+                                <Field name="confirm">
+                                    {({ input, meta }) => (
+                                    <div>
+                                        <label className="my__label">Подтверждение пароля</label>
+                                        <input className="my__input" {...input} type="password" placeholder="Подтвердите пароль" />
+                                        {meta.error && meta.touched && <span>{meta.error}</span>}
+                                    </div>
+                                    )}
+                                </Field>
+                                <div className="buttons">
+                                    <button type="submit" disabled={submitting}>
+                                        Зарегистрироваться
+                                    </button>
                                 </div>
-                                )}
-                            </Field>
-                            <Field name="password">
-                                {({ input, meta }) => (
-                                <div>
-                                    <label className="my__label">Ваш пароль</label>
-                                    <input className="my__input" {...input} type="password" placeholder="Ваш пароль" />
-                                    {meta.error && meta.touched && <span>{meta.error}</span>}
-                                </div>
-                                )}
-                            </Field>
-                            <Field name="confirm">
-                                {({ input, meta }) => (
-                                <div>
-                                    <label className="my__label">Подтверждение пароля</label>
-                                    <input className="my__input" {...input} type="password" placeholder="Подтвердите пароль" />
-                                    {meta.error && meta.touched && <span>{meta.error}</span>}
-                                </div>
-                                )}
-                            </Field>
-                            <div className="buttons">
-                                <button type="submit" disabled={submitting}>
-                                    Зарегистрироваться
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                )}
-            />
-        </div>
-    )
+                            </form>
+                        </div>
+                    )}
+                />
+            </div>
+        )
+    }
 }
 
 const mapStateToProps = store => {
