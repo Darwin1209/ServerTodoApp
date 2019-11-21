@@ -39,11 +39,17 @@ class App extends React.Component {
             )}
           />
           <Route 
+            path="/autorization"
+            render={() => (
+              <AutorizForm/>
+            )}
+          />
+          <Route 
             path="/registration"
             render={() => (
               <AutorizForm/>
             )}
-            />
+          />
           <Footer />
         </Router>        
       </div>

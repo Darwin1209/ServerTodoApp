@@ -5,33 +5,23 @@ import LogoutButton from "../LogoutButton";
 
 
 class LoginButton extends React.Component{
-
-  onLogIn = () => {
-    console.log('aaa');
-  }
-
-  onRegistr = () => {
-    console.log('bbb');
-  }
   
   render() {
     return (
       <div className="header-user">
         <p>Привет, Аноним</p>
-        <button className="button" onClick={this.onLogIn}>Войти</button>
-        <button className="button" onClick={this.onRegistr}>Зарегистрироваться  </button>
+        <Link to = '/autorization'>
+          <button className="button">Войти</button>
+        </Link>
+        <Link to = '/registration'>
+          <button className="button">Зарегистрироваться</button>
+        </Link>
       </div>
     )
   } 
 }
 
 class Header extends React.Component { 
-  onLogOut = () => {
-    console.log('aaa');
-  }
-  onRegistr = () => {
-    console.log('aaa');
-  }
 
   render() {
     const { user } = this.props;
@@ -50,9 +40,6 @@ class Header extends React.Component {
           </li>
           <li>
             <Link to = '/todoList'>Список дел</Link>
-          </li>
-          <li>
-            <Link to = '/registration'>Авторизация</Link>
           </li>
         </ul>
         {button}

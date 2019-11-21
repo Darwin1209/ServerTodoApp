@@ -11,6 +11,7 @@
 
 .header p {
     margin: 0;
+    margin-right: 20px;
     color: white;
 }
 
@@ -20,13 +21,13 @@
     margin:0;
     display: flex;
     align-items: center;
-    width: 300px;
+    width: 180px;
     justify-content: space-between;
 }
 
 .header-nav li a {
     color: white;
-    text-decoration: none
+    text-decoration: none;
 }
 
 .header-nav li a:hover {
@@ -36,8 +37,6 @@
 
 .header-user {
     display: flex;
-    width: 400px;
-    justify-content: space-between;
     align-items: center;
 }
 
@@ -45,8 +44,8 @@
   display: inline-block;
   text-align: center;
   text-decoration: none;
-
   margin: 2px 0;
+  margin-left: 10px;
   border: solid 1px transparent;
   border-radius: 4px;
   padding: 0.5em 1em;
