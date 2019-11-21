@@ -18,10 +18,17 @@ function postData(url = '', data = {}) {
 }
 
 export function registrUser(user) {
-    return {
-        type: 'REGISTR_USER',
-        payload: user
-    };
+    return (dispatch) => {
+        postData('/registration', user)
+        .then(response => {
+            if (response.status === "OK") {
+                dispatch({
+                    type: 'VERIFICATE_USER',
+                    payload: user.login
+                });
+            }
+        })
+    }
 }
 
 export function logoutUser() {

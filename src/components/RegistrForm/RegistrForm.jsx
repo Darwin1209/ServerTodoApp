@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Field } from 'react-final-form';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-
+import { registrUser } from '../../actions/UserActions';
 
 const passStrong = value => {
     if (value.length < 9) {
@@ -22,10 +22,10 @@ const passStrong = value => {
     return "Пароль слишком слабый";
 }
 
-const RegistrForm = ( ) => {
+const RegistrForm = ( { registrUser } ) => {
 
     const onSubmit = values => {
-        alert(values);
+        registrUser(values);
     }
     
     return(
@@ -97,4 +97,18 @@ const RegistrForm = ( ) => {
     )
 }
 
-export default RegistrForm;
+const mapStateToProps = store => {
+    return {
+      user: store.user,
+    };
+  };
+  
+  
+  const mapDispatchToProps = dispatch => bindActionCreators({
+    registrUser
+  },dispatch)
+  
+  export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(RegistrForm);
