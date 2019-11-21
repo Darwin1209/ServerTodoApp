@@ -1,13 +1,19 @@
 import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+import { logoutUser } from "../../actions/UserActions";
 
 class LogoutButton extends React.Component {
+
+  onLog = () => {
+      this.props.logoutUser();
+  }
+
   render() {
     return (
       <div className="header-user">
-        <p>Привет, {this.props.user}</p>
-        <button className="button">Выйти</button>
+        <p>Привет, {this.props.user.name}</p>
+        <button className="button" onClick={this.onLog}>Выйти</button>
       </div>
     )
   }
@@ -21,7 +27,7 @@ const mapStateToProps = store => {
   
   
 const mapDispatchToProps = dispatch => bindActionCreators({
-    localUser,
+    logoutUser,
 },dispatch)
   
 export default connect(

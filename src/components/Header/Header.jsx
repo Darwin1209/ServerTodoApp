@@ -1,17 +1,8 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import "./Header.css";
+import LogoutButton from "../LogoutButton";
 
-class LogoutButton extends React.Component {
-  render() {
-    return (
-      <div className="header-user">
-        <p>Привет, {this.props.user}</p>
-        <button className="button">Выйти</button>
-      </div>
-    )
-  }
-}
 
 class LoginButton extends React.Component{
 
@@ -46,7 +37,7 @@ class Header extends React.Component {
     const { user } = this.props;
     let button;
     if (user !== "anonim") {
-      button = <LogoutButton user = {user} />;
+      button = <LogoutButton/>;
     } else {
       button = <LoginButton/>;
     }

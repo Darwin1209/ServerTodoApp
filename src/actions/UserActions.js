@@ -24,6 +24,15 @@ export function registrUser(user) {
     };
 }
 
+export function logoutUser() {
+    localStorage.removeItem("user");
+    return {
+        type: 'LOGOUT_USER',
+        payload: 'anonim'
+    };
+}
+
+
 export function verificateUser(user) {
     return (dispatch) => {
         postData('/verificate', user)
