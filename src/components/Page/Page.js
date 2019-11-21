@@ -49,7 +49,7 @@ class Page extends React.Component {
   }
   
   componentDidMount() {
-    if (this.props.user.name !== "anonim" || localStorage.getItem("user") !== null)
+    if (this.props.user.name !== "anonim")
       this.props.getTodoAction(this.props.user.name);
   }
 

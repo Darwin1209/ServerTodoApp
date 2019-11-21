@@ -5,6 +5,8 @@ import { bindActionCreators } from 'redux';
 import Page from "../Page";
 import Header from "../Header";
 import AutorizForm from "../AutorizForm";
+import Main from "../Main";
+import Footer from "../Footer";
 
 import { localUser } from "../../actions/UserActions";
 
@@ -27,7 +29,7 @@ class App extends React.Component {
           <Route 
             path="/" 
             render={() => (
-              <Page/>
+              <Main/>
             )}
             exact/>
           <Route 
@@ -42,6 +44,7 @@ class App extends React.Component {
               <AutorizForm/>
             )}
             />
+          <Footer />
         </Router>        
       </div>
     );

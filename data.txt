@@ -5,6 +5,12 @@
       "password": "Qwerty123",
       "todo": [
         {
+          "label": "Создать главную страницу и Footer",
+          "important": true,
+          "done": true,
+          "id": "2019-11-20T10:29:16.041Z"
+        },
+        {
           "label": "Создать авторизацию и регистрацию",
           "important": true,
           "done": false,
@@ -45,6 +51,12 @@
           "important": true,
           "done": false,
           "id": "2019-11-19T22:45:09.255Z"
+        },
+        {
+          "label": "Видоизменить немного main и footer",
+          "important": false,
+          "done": false,
+          "id": "2019-11-21T14:51:48.473Z"
         }
       ]
     }
