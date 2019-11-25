@@ -15,8 +15,26 @@ function postData(url = '', data = {}) {
     })
     .then(response => response.json()) // парсит JSON ответ в Javascript объект
     .catch((e)=>console.error(e))
-  }
+}
 
+function deleteData(url = '', data = {}) {
+  // Значения по умолчанию обозначены знаком *
+    return fetch(url, {
+        method: 'DELETE', // *GET, POST, PUT, DELETE, etc.
+        mode: 'cors', // no-cors, cors, *same-origin
+        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: 'same-origin', // include, *same-origin, omit
+        headers: {
+            'Content-Type': 'application/json',
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        redirect: 'follow', // manual, *follow, error
+        referrer: 'no-referrer', // no-referrer, *client
+        body: JSON.stringify(data), // тип данных в body должен соответвовать значению заголовка "Content-Type"
+    })
+    .then(response => response.json()) // парсит JSON ответ в Javascript объект
+    .catch((e)=>console.error(e))
+}
 
 export function setTodo(task) {
   return (dispatch,getState) =>{
@@ -32,15 +50,25 @@ export function setTodo(task) {
 }
 
 export function deleteItem(id) {
-  return (dispatch,getState) =>{
+  return ( dispatch, getState ) => {
     const { user } = getState();
-    let newArray = getState().page.todoData.filter(el => el.id !== id);
-    dispatch( setTodoFetch(user.name, newArray));
-    dispatch({
-      type: 'DELETE_ITEM',
-      payload: newArray
+    let name = user.name;
+    deleteData('/delete', { name, idTast: id })
+    .then(response => {
+      dispatch({
+            type: 'DELETE_ITEM',
+            payload: response
+       })
     })
   }
+  // return (dispatch,getState) =>{
+  //   // const { user } = getState();
+  //   // dispatch( setTodoFetch(user.name, newArray));
+  //   dispatch({
+  //     type: 'DELETE_ITEM',
+  //     payload: newArray
+  //   })
+  // }
 }
 
 export function doneItem(id) {

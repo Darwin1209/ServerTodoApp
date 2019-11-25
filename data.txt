@@ -25,19 +25,19 @@
         {
           "label": "Загуглить про develpment и production режимы в webpack",
           "important": false,
-          "done": false,
+          "done": true,
           "id": "2019-11-19T22:23:51.097Z"
         },
         {
           "label": "Eslint",
           "important": false,
-          "done": false,
+          "done": true,
           "id": "2019-11-19T22:24:01.028Z"
         },
         {
           "label": "Перенести бэк на бд",
           "important": false,
-          "done": false,
+          "done": true,
           "id": "2019-11-19T22:24:14.743Z"
         },
         {

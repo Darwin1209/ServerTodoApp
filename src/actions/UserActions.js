@@ -18,7 +18,9 @@ function postData(url = '', data = {}) {
 }
 
 export function registrUser(user) {
+    console.log("Jopa1");
     return (dispatch) => {
+        console.log("Jopa");
         postData('/registration', user)
         .then(response => {
             if (response.status === "OK") {
@@ -31,18 +33,9 @@ export function registrUser(user) {
     }
 }
 
-export function logoutUser() {
-    localStorage.removeItem("user");
-    return {
-        type: 'LOGOUT_USER',
-        payload: 'anonim',
-        status: undefined,
-    };
-}
-
-
 export function verificateUser(user) {
     return (dispatch) => {
+        console.log("afawf");
         postData('/verificate', user)
         .then(response => {
             if (response.status === "OK") {
@@ -63,6 +56,15 @@ export function verificateUser(user) {
             }
         })
     }
+}
+
+export function logoutUser() {
+    localStorage.removeItem("user");
+    return {
+        type: 'LOGOUT_USER',
+        payload: 'anonim',
+        status: undefined,
+    };
 }
 
 export function localUser() {
