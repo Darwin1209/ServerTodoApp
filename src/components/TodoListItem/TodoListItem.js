@@ -5,20 +5,18 @@ import "./TodoListItem.css";
 
 import {
   deleteItem,
-  doneItem,
-  importantItem,
-  setTodoFetch
+  toogleItem,
 } from "../../actions/PageActions";
 
 class TodoListItem extends React.Component {
   onToggleDone = ()=> {
-    const {onToggleDone, id} = this.props
-    onToggleDone(id);
+    const {onToggle, id} = this.props
+    onToggle(id, "done");
   }
 
   onToggleImportant = ()=> {
-    const {onToggleImportant, id} = this.props
-    onToggleImportant(id);
+    const {onToggle, id} = this.props
+    onToggle(id, "important");
   }
 
   deleteItem = ()=> {
@@ -77,9 +75,7 @@ const mapStateToProps = store => {
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   deleteItemAction: deleteItem,
-  onToggleDone: doneItem,
-  onToggleImportant: importantItem,
-  setTodoFetch: setTodoFetch,
+  onToggle: toogleItem,
 },dispatch)
 
 export default connect(

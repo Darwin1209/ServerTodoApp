@@ -59,6 +59,7 @@ export function toogleItem(id, proper) {
     let name = user.name;
     fetchData('/toogle', { name, idTast: id, proper }, "PUT")
     .then(response => {
+      console.log(response);
       dispatch({
         type: "TOOGLE",
         payload: response
@@ -68,7 +69,7 @@ export function toogleItem(id, proper) {
 }
 
 export const getTodo = (name) => dispatch => {
-  postData('/todoGet', { name })
+  fetchData('/todoGet', { name }, "POST")
   .then(data => {
     console.log(data);
     dispatch({ type: "FETCH_TODO_SUCCESS", payload: data});
