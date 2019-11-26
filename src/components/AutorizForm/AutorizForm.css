@@ -48,3 +48,8 @@
 .buttons {
   margin-top:20px;
 }
+
+.error {
+  text-align: center;
+  margin: 20px;
+}

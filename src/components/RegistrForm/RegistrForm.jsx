@@ -27,16 +27,18 @@ const passStrong = value => {
 class RegistrForm extends React.Component {
 
     onSubmit = values => {
-        registrUser(values);
+        this.props.registrUser(values);
         console.log(values);
     }
     
     render() {
-
-        if (this.props.user.status === "OK") {
-            return <Redirect push to="/"/>
+        let error = undefined;
+        let { status } = this.props.user;
+        if (status === "OK") {
+            return <Redirect push to="/" />;
+        } else if (status === "LOGIN") {
+            error = <h2 className="error">Такой логин уже занят</h2>
         }
-
         return(
             <div className="wrapper">
                 <Form
@@ -99,6 +101,7 @@ class RegistrForm extends React.Component {
                         </div>
                     )}
                 />
+                {error}
             </div>
         )
     }

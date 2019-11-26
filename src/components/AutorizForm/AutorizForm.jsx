@@ -16,12 +16,18 @@ class AutorizForm extends React.Component {
     onSubmit = values => {
         console.log(values);
         this.props.verificateUser(values);
+        values = null;
     }
 
     render() {
-
-        if (this.props.user.status === "OK") {
+        let error = undefined;
+        let { status } = this.props.user;
+        if (status === "OK") {
             return <Redirect push to="/" />;
+        } else if (status === "NO_USER") {
+            error = <h2 className="error">Такого пользователя не существует</h2>
+        } else if (status === "INVALID_PASSWORD") {
+            error = <h2 className="error">Неверный пароль</h2>
         }
 
         return(
@@ -69,6 +75,7 @@ class AutorizForm extends React.Component {
                     </div>
                 )}
                 />
+                {error}
             </div>
         )
     }

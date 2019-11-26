@@ -18,16 +18,21 @@ function postData(url = '', data = {}) {
 }
 
 export function registrUser(user) {
-    console.log("Jopa1");
     return (dispatch) => {
-        console.log("Jopa");
         postData('/registration', user)
         .then(response => {
             if (response.status === "OK") {
                 dispatch({
                     type: 'VERIFICATE_USER',
-                    payload: user.login
+                    payload: user.login,
+                    status: response.status,
                 });
+            } else {
+                dispatch({
+                    type: 'VERIFICATE_USER',
+                    payload: "anonim",
+                    status: response.status
+                })
             }
         })
     }
@@ -35,7 +40,6 @@ export function registrUser(user) {
 
 export function verificateUser(user) {
     return (dispatch) => {
-        console.log("afawf");
         postData('/verificate', user)
         .then(response => {
             if (response.status === "OK") {

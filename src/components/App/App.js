@@ -10,6 +10,7 @@ import Main from "../Main";
 import Footer from "../Footer";
 
 import { localUser } from "../../actions/UserActions";
+import { getTodo } from "../../actions/PageActions"; 
 
 import "./App.css";
 
@@ -18,6 +19,7 @@ class App extends React.Component {
   componentDidMount() {
     if (localStorage.getItem("user") !== null) {
       this.props.localUser(localStorage.getItem("user"));
+      this.props.getTodo(localStorage.getItem("user"));
     }
   }
 
@@ -67,6 +69,7 @@ const mapStateToProps = store => {
 
 const mapDispatchToProps = dispatch => bindActionCreators({
     localUser,
+    getTodo,
 },dispatch)
 
 export default connect(
