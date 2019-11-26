@@ -1,26 +1,7 @@
-function postData(url = '', data = {}) {
+function fetchData(url = '', data = {}, method) {
   // Значения по умолчанию обозначены знаком *
     return fetch(url, {
-        method: 'POST', // *GET, POST, PUT, DELETE, etc.
-        mode: 'cors', // no-cors, cors, *same-origin
-        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-        credentials: 'same-origin', // include, *same-origin, omit
-        headers: {
-            'Content-Type': 'application/json',
-            // 'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        redirect: 'follow', // manual, *follow, error
-        referrer: 'no-referrer', // no-referrer, *client
-        body: JSON.stringify(data), // тип данных в body должен соответвовать значению заголовка "Content-Type"
-    })
-    .then(response => response.json()) // парсит JSON ответ в Javascript объект
-    .catch((e)=>console.error(e))
-}
-
-function deleteData(url = '', data = {}) {
-  // Значения по умолчанию обозначены знаком *
-    return fetch(url, {
-        method: 'DELETE', // *GET, POST, PUT, DELETE, etc.
+        method: method, // *GET, POST, PUT, DELETE, etc.
         mode: 'cors', // no-cors, cors, *same-origin
         cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
         credentials: 'same-origin', // include, *same-origin, omit
@@ -37,14 +18,15 @@ function deleteData(url = '', data = {}) {
 }
 
 export function setTodo(task) {
-  return (dispatch,getState) =>{
+  return ( dispatch, getState ) => {
     const { user } = getState();
-    let newArray = getState().page.todoData;
-    newArray.push(task);
-    dispatch( setTodoFetch(user.name, newArray));
-    dispatch({
-      type: 'SET_TODO',
-      payload: newArray
+    let name = user.name;
+    fetchData('/todoSet', { name, task }, "POST")
+    .then(response => {
+      dispatch({
+            type: 'SET_TODO',
+            payload: response
+       })
     })
   }
 }
@@ -53,7 +35,7 @@ export function deleteItem(id) {
   return ( dispatch, getState ) => {
     const { user } = getState();
     let name = user.name;
-    deleteData('/delete', { name, idTast: id })
+    fetchData('/delete', { name, idTast: id }, "DELETE")
     .then(response => {
       dispatch({
             type: 'DELETE_ITEM',
@@ -71,31 +53,17 @@ export function deleteItem(id) {
   // }
 }
 
-export function doneItem(id) {
-  return (dispatch, getState) => {
+export function toogleItem(id, proper) {
+  return ( dispatch, getState ) => {
     const { user } = getState();
-    let newArray = getState().page.todoData;
-    let index = newArray.findIndex(el => el.id === id);
-    newArray[index]["done"] = !newArray[index]["done"];
-    dispatch( setTodoFetch(user.name, newArray ));
-    dispatch({
-      type: "TOOGLE_DONE",
-      payload: newArray
-    });
-  }
-}
-
-export function importantItem(id) {
-  return (dispatch, getState) => {
-    const { user } = getState();
-    let newArray = getState().page.todoData;
-    let index = newArray.findIndex(el => el.id === id);
-    newArray[index]["important"] = !newArray[index]["important"];
-    dispatch( setTodoFetch(user.name, newArray ));
-    dispatch({
-      type: "TOOGLE_IMPORTANT",
-      payload: newArray
-    });
+    let name = user.name;
+    fetchData('/toogle', { name, idTast: id, proper }, "PUT")
+    .then(response => {
+      dispatch({
+        type: "TOOGLE",
+        payload: response
+      });
+    })
   }
 }
 
@@ -107,9 +75,9 @@ export const getTodo = (name) => dispatch => {
   })
 }
 
-export const setTodoFetch = (name, todoData) => dispatch => {
-  postData('/todos', { name, todoData })
-  .then(response => {
-    console.log(response);
-  })
-}
+// export const setTodoFetch = (name, todoData) => dispatch => {
+//   postData('/todos', { name, todoData })
+//   .then(response => {
+//     console.log(response);
+//   })
+// }
