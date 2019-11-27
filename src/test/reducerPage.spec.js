@@ -1,4 +1,4 @@
-import pageReducer from '../reducers/page';
+import { pageReducer, initialState } from '../reducers/page';
 
 describe('pageRecucer', () => {
     it('test setTodo', () => {

@@ -11,9 +11,18 @@ const required = value => {
     return (value ? undefined : 'Поле должно быть заполнено')
 };
 
+const submit = (form, handleSubmit) => {
+    return (event) => {
+        const error = handleSubmit(event);
+        console.log('Error not in resolved promise', error);
+        if (error) { return error; }
+        form.reset();
+    }
+}
+
 class AutorizForm extends React.Component {
 
-    onSubmit = values => {
+    onSubmit = (values, form) => {
         console.log(values);
         this.props.verificateUser(values);
         values = null;
@@ -36,7 +45,15 @@ class AutorizForm extends React.Component {
                 onSubmit={this.onSubmit}
                 render={({ handleSubmit, form, submitting, pristine }) => (
                     <div className="block">    
-                        <form onSubmit={handleSubmit} className="form-inner">
+                        <form 
+                        onSubmit={submit(form, handleSubmit)}
+                        // onSubmit={async (event) => {
+                        //     const error = await handleSubmit(event);
+                        //     console.log('Error not in resolved promise', error);
+                        //     if (error) { return error; }
+                        //     form.reset();
+                        // }}
+                        className="form-inner">
                             <h1>Авторизация</h1>
                             <Field name="login" validate={required}>
                                 {({ input, meta }) => (
