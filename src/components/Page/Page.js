@@ -19,7 +19,7 @@ import {
 
 import './Page.css'
 
-class Page extends React.Component {
+export class Page extends React.Component {
 
   search(items, term) {
     if (term.length === 0) {

@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="5" failures="0" time="3.873">
-  <testsuite name="pageRecucer" errors="0" failures="0" skipped="0" timestamp="2019-11-28T21:17:48" time="2.289" tests="5">
-    <testcase classname="pageRecucer test setTodo" name="pageRecucer test setTodo" time="0.006">
+<testsuites name="jest tests" tests="7" failures="0" time="11.323">
+  <testsuite name="pageRecucer" errors="0" failures="0" skipped="0" timestamp="2019-11-28T22:55:35" time="2.891" tests="5">
+    <testcase classname="pageRecucer test setTodo" name="pageRecucer test setTodo" time="0.068">
     </testcase>
-    <testcase classname="pageRecucer test deleteItem" name="pageRecucer test deleteItem" time="0.001">
+    <testcase classname="pageRecucer test deleteItem" name="pageRecucer test deleteItem" time="0.008">
     </testcase>
-    <testcase classname="pageRecucer test toogle" name="pageRecucer test toogle" time="0">
+    <testcase classname="pageRecucer test toogle" name="pageRecucer test toogle" time="0.001">
     </testcase>
-    <testcase classname="pageRecucer test fetchTodoSuccess" name="pageRecucer test fetchTodoSuccess" time="0.001">
+    <testcase classname="pageRecucer test fetchTodoSuccess" name="pageRecucer test fetchTodoSuccess" time="0">
     </testcase>
-    <testcase classname="pageRecucer test default" name="pageRecucer test default" time="0.001">
+    <testcase classname="pageRecucer test default" name="pageRecucer test default" time="0.003">
+    </testcase>
+  </testsuite>
+  <testsuite name="Footer" errors="0" failures="0" skipped="0" timestamp="2019-11-28T22:55:35" time="2.934" tests="2">
+    <testcase classname="Footer render footer name" name="Footer render footer name" time="0.031">
+    </testcase>
+    <testcase classname="Footer render footer github" name="Footer render footer github" time="0.002">
     </testcase>
   </testsuite>
 </testsuites>
