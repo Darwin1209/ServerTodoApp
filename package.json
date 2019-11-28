@@ -3,9 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "babel-eslint": "^10.0.3",
     "body-parser": "^1.19.0",
+    "eslint": "^6.7.1",
     "express": "^4.17.1",
     "final-form": "^4.18.6",
+    "jest": "^24.9.0",
+    "jest-junit": "^9.0.0",
     "mongoose": "^5.7.12",
     "morgan": "^1.9.1",
     "prop-types": "^15.7.2",
@@ -22,7 +26,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "npx jest --coverage",
     "eject": "react-scripts eject"
   },
   "proxy": "http://localhost:3001",
@@ -40,5 +44,23 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "jest": {
+    "reporters": [
+      "default",
+      [
+        "jest-junit",
+        {
+          "outputName": "reports/junit.xml"
+        }
+      ]
+    ],
+    "coverageDirectory": "<rootDir>/reports/coverage",
+    "coverageReporters": [
+      "html"
+    ],
+    "transform": {
+      "^.+\\.js$": "babel-jest"
+    }
   }
 }

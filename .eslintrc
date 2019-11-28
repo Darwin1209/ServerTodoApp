@@ -1,0 +1,13 @@
+{
+    "parser": "babel-eslint",
+    "extends": "standard",
+    "rules" : {
+        "indent": ["warn", 4]
+    },
+    "overrides": [{
+        "files": ["**/*.spec.js"],
+        "rules": {
+            "no-undef": "off"
+        }
+    }]
+}
