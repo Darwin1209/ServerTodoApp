@@ -24,11 +24,19 @@ const passStrong = value => {
     return "Пароль слишком слабый";
 }
 
+const submit = (form, handleSubmit) => {
+    return (event) => {
+        const error = handleSubmit(event);
+        console.log('Error not in resolved promise', error);
+        if (error) { return error; }
+        form.reset();
+    }
+}
+
 class RegistrForm extends React.Component {
 
     onSubmit = values => {
         this.props.registrUser(values);
-        console.log(values);
     }
     
     render() {
@@ -63,7 +71,7 @@ class RegistrForm extends React.Component {
                     }}
                     render={({ handleSubmit, form, submitting, pristine }) => (
                         <div className="block">
-                            <form onSubmit={handleSubmit} className="form-inner">
+                            <form onSubmit={submit(form, handleSubmit)} className="form-inner">
                                 <h1>Регистрация</h1>
                                 <Field name="login">
                                     {({ input, meta }) => (

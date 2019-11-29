@@ -22,10 +22,8 @@ const submit = (form, handleSubmit) => {
 
 class AutorizForm extends React.Component {
 
-    onSubmit = (values, form) => {
-        console.log(values);
+    onSubmit = (values) => {
         this.props.verificateUser(values);
-        values = null;
     }
 
     render() {
@@ -47,12 +45,6 @@ class AutorizForm extends React.Component {
                     <div className="block">    
                         <form 
                         onSubmit={submit(form, handleSubmit)}
-                        // onSubmit={async (event) => {
-                        //     const error = await handleSubmit(event);
-                        //     console.log('Error not in resolved promise', error);
-                        //     if (error) { return error; }
-                        //     form.reset();
-                        // }}
                         className="form-inner">
                             <h1>Авторизация</h1>
                             <Field name="login" validate={required}>
