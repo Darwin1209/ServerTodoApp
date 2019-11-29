@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const app = express();
 const TodoData = require('./models/Todo');
 const string = require('./config.js');
-const PORT = process.env.PORT || 3001
+const PORT = process.env.PORT || 3001;
 
 app.use(logger('dev'));
 app.use(bodyParser.json());

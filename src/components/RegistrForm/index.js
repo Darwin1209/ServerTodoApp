@@ -1,3 +1,3 @@
-import RegistrForm from './RegistrForm';
+import RegistrForm from './RegistrForm'
 
-export default RegistrForm;
+export default RegistrForm

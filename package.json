@@ -22,13 +22,17 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
     "redux": "^4.0.4",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "socket.io": "^2.3.0",
+    "socket.io-client": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "npx jest --coverage",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "eslint": "npx eslint ./src",
+    "eslintFix": "npx eslint ./src --fix"
   },
   "proxy": "http://localhost:3001",
   "eslintConfig": {
@@ -78,6 +82,12 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.9.0",
     "react-addons-test-utils": "^15.6.2",
-    "react-test-renderer": "^16.12.0"
+    "react-test-renderer": "^16.12.0",
+    "eslint-config-standard": "~11.0.0",
+    "eslint-import-resolver-webpack": "0.11.1",
+    "eslint-plugin-import": "~2.18.2",
+    "eslint-plugin-node": "~10.0.0",
+    "eslint-plugin-promise": "~4.2.1",
+    "eslint-plugin-standard": "4.0.1"
   }
 }
