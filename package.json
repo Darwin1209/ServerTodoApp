@@ -11,7 +11,7 @@
     "express": "^4.17.1",
     "final-form": "^4.18.6",
     "jest-junit": "^9.0.0",
-    "mongoose": "^5.7.12",
+    "mongoose": "^8.8.3",
     "morgan": "^1.9.1",
     "prop-types": "^15.7.2",
     "react": "^16.11.0",
